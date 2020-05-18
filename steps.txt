@@ -1,0 +1,221 @@
+//https://github.com/VishalSharma0309
+//last updated: May 18, 2020
+
+
+
+SETTING UP THE ENVIRONMENT
+
+
+1. Clone the repositories
+	git clone https://github.com/VishalSharma0309/pulp-dronet.git
+
+2. Installing the PULP-SDK
+        2.1 Ubuntu dependencies
+        sudo apt install git python3-pip python-pip gawk texinfo libgmp-dev libmpfr-dev libmpc-dev swig3.0 libjpeg-dev lsb-core doxygen python-sphinx sox graphicsmagick-libmagick-dev-compat libsdl2-dev libswitch-perl libftdi1-dev cmake scons libsndfile1-dev
+        sudo pip3 install artifactory twisted prettytable sqlalchemy pyelftools 'openpyxl==2.6.4' xlsxwriter pyyaml numpy configparser pyvcd
+        sudo pip2 install configparser
+
+* NOTE: if "pip install" doesn't work, try "python3 -m pip install" or see if pi
+p and python3 are using the same version of python
+
+* NOTE: for Ubuntu 18 or newer, it is needed to configure the default gcc versio
+n to 5 as more recent gcc versions make the build fail
+
+To check: g++ --version
+
+To change: 
+	i. Install packages
+        sudo apt-get install gcc-5 g++-5
+
+        ii. Install alternatives
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10
+
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 10
+
+        sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
+        sudo update-alternatives --set cc /usr/bin/gcc
+
+        sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
+        sudo update-alternatives --set c++ /usr/bin/g++
+
+        iii. Configure Alternatives
+        sudo update-alternatives --config gcc
+        sudo update-alternatives --config g++
+
+
+	2.2 Setting up pulp-riscv-gnu-toolchain 
+
+	sudo -s
+	
+	apt install git python3-pip python-pip gawk texinfo libgmp-dev libmpfr-dev libmpc-dev swig3.0 libjpeg-dev lsb-core doxygen python-sphinx sox graphicsmagick-libmagick-dev-compat libsdl2-dev libswitch-perl libftdi1-dev cmake scons libsndfile1-dev
+	
+	pip3 install twisted prettytable artifactory sqlalchemy pyelftools xlsxwriter pyyaml numpy configparser pyvcd
+
+	pip2 install configparser
+
+	cd /opt
+
+	mkdir riscv
+
+	cd riscv	
+
+	git clone --recursive https://github.com/pulp-platform/pulp-riscv-gnu-toolchain
+
+	cd pulp-riscv-gnu-toolchain
+
+	apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev
+
+	./configure --prefix=/opt/riscv --with-arch=rv32imc --with-cmodel=medlow --enable-multilib
+
+	make
+
+	export PATH=$PATH:/opt/riscv/bin
+	export PULP_RISCV_GCC_TOOLCHAIN=/opt/riscv
+	export VSIM_PATH=/opt/riscv/pulpissimo/sim
+
+	2.3 Setting up PULP-SDK
+	
+	cd /opt/riscv
+	git clone https://github.com/pulp-platform/pulp-builder.git
+	cd pulp-builder
+
+	* NOTE: update the pulpissimo.sh and change export pulpissimo.sh to
+	source $PULP_SDK_HOME/configs/pulpissimo.sh
+	won't run otherwise	
+	
+	source configs/pulpissimo.sh
+	cd configs
+	./pulpissimo.sh
+	./common.sh
+	cd ..	
+
+	./scripts/clean
+
+	./scripts/deprecated/build-gvsoc
+
+	./scripts/build-runtime
+
+	source sdk-setup.sh
+
+	cd /opt/riscv
+
+	pip3 install openpyxl==2.6.4
+
+	git clone https://github.com/pulp-platform/pulp-sdk.git -b master
+
+	cd pulp-sdk
+
+	source configs/pulpissimo.sh
+
+	make all
+
+	export PULP_SDK_HOME=/opt/riscv/pulp-sdk
+
+
+	2.3 Install Simulation and implementation
+
+		2.3.1 Install QuestaSim
+	
+		cd /opt/riscv
+
+		git clone https://github.com/pulp-platform/pulpissimo.git
+
+		cd pulpissimo
+
+		./update-ips
+
+		source setup/vsim.sh
+
+		make clean build
+	
+		
+		2.3.2 Verify that the following packages are installed with the proper version
+
+		autoconf --version >=2.64 (mine is 2.69)
+		automake --version >=1.14 (mine is 1.15.1)
+		pkg-config --version >= 0.23 (mine is 0.29.1) 				
+		texinfo (mine is 6.5.0.dfsg.1-2)
+		make (mine is 4.1)
+		libtool (mine is 2.4.6)
+		libusb-1.0 (mine is 2:1.0.21-2)
+		libftdi (mine is 0.20-4build3)
+		libusb-0.1 or libusb-compat-0.1 for some older drivers (mine is 0.1-4)
+
+
+		2.3.3 Install Microprocessor programming and debugging
+		
+		cd /opt/riscv/pulp-sdk
+
+		source sourceme.sh && ./pulp-tools/bin/plpbuild checkout build --p openocd --stdout
+
+
+	2.4 Download the Basic Kernels
+	
+	cd ./pulp-dronet
+	git submodule init -- src/autotiler
+	git submodule update -- src/autotiler
+
+	To check if its done correctly
+	cd ~/nano_drone/pulp-dronet/src/autotiler
+	ls 
+
+	Result should be something like this
+	get_tiler.py  include  LICENSE  Makefile  src
+
+	
+	2.5 Install the Autotiler
+
+	cd src/autotiler
+	make all			
+	
+	To check cd autotiler/src
+	ls
+	Result should be like
+	libtile.a  libtile.dronet.a
+	
+	
+
+	2.6 Download the datasets
+	
+	PULP-DroNet dataset considered:
+ 		i. Himax Dataset https://github.com/pulp-platform/Himax_Dataset
+    		ii. Udacity Dataset https://github.com/pulp-platform/Udacity_Dataset
+    		iii. Zurich Bicycle Dataset https://github.com/pulp-platform/Zurich_Bicycle_Dataset
+
+				
+	cd ./pulp-dronet
+	git submodule init -- dataset/
+	git submodule update -- dataset/
+
+
+
+3. Compile PULP-DroNet
+
+For platform, compilation and target settings set it in the autocompiler/src/config.h file
+
+To configure the PULP-SDK executing in your terminal
+source /opt/riscv/pulp-sdk/configs/gap.sh
+
+Depending upon your target platform source one of the below scripts
+source /opt/riscv/pulp-sdk/configs/platform-gvsoc.sh  // virtual platform (currently used by me)
+source /opt/riscv/pulp-sdk/configs/platform-board.sh  // if target is either PULP-Shield or GAPuino board
+
+
+cd ./pulp-dronet/src
+
+make clean conf all
+
+/* THIS COMMAND IS NOT WORKING
+
+Error message:
+/opt/riscv/pulp-sdk/pkg/sdk/dev/install/include/archi/pulp.h:29:46: fatal error: archi/chips/gap/pulp.h: No such file or directory
+ #include A_PULP_CHIP_INC(PULP_CHIP_FAMILY_STR)
+                                              ^
+compilation terminated.
+/home/vishal/nano_drone/pulp-dronet/src/build/gap/__rules.mk:58: recipe for target '/home/vishal/nano_drone/pulp-dronet/src/build/gap/PULPDroNet/cl/PULPDronet.o' failed
+make: *** [/home/vishal/nano_drone/pulp-dronet/src/build/gap/PULPDroNet/cl/PULPDronet.o] Error 1
+
+*/	
+
+	
+	
