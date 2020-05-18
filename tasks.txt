@@ -1,0 +1,23 @@
+//https://github.com/VishalSharma0309
+
+
+Meeting 1: May 15, 2020
+
+Taks:
+
+	Final Objective: Obtain custom PCB to incorporate multiple cameras in PULP SoC	
+
+	1. Study and understand the hardware (PULP SoC)
+	2. Obtain the PCB files and understand them
+	3. Figure out a way to interface multiple cameras on the SoC
+	4. Make a list of software required for the task
+	
+Software Required:
+	1. For PCB files: Altium
+	2. Intel Quartus Prime (can work with lite)	
+
+Hardware Requirement:
+	1. For development purposes: GAPuino development board
+	https://greenwaves-technologies.com/product/gapuino-combo-kit/
+
+
