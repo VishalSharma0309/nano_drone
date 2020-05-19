@@ -1,4 +1,4 @@
-//https://github.com/VishalSharma0309
+// https://github.com/VishalSharma0309/nano_drone
 
 
 Meeting 1: May 15, 2020
@@ -20,4 +20,29 @@ Hardware Requirement:
 	1. For development purposes: GAPuino development board
 	https://greenwaves-technologies.com/product/gapuino-combo-kit/
 
+
+Similar Projects
+	1. Swarm of 6 nano drones: MAVLab, TU Delft
+		Paper: Swarm exploration by tiny flying robots
+
+	2. Nano Drone: Harvard Edge Computing
+		Paper: Learning to Seek: Deep Reinforcement Learning for Phototaxis of a Nano Drone in an Obstacle Field
+		Repository: https://github.com/harvard-edge/source-seeking
+		- Light-seeking drone
+		- They use laser rangers, light sensors and the optic flow deck
+		- They train using AirLearning (a Deep-RL simulation platform)
+
+	3. Downwash- Aware Trajectory Planning for Large Quadcopter Teams: USC RESL
+	   Crazyswarm: A large nano-quadcopter swarm: ACT Lab 
+		Source: http://act.usc.edu/crazyswarm.html
+
+	4. Planning and Navigation for Drone Flight: CSAIL, MIT
+		Source: https://www.csail.mit.edu/news/watch-drones-do-donuts-around-obstacles-thanks-planning-algorithms
+
+	5. Flying, perching and climbing robot: SCAMP, Stanford
+		Source: https://spectrum.ieee.org/automaton/robotics/drones/stanfords-flying-perching-scamp-can-climb-up-walls
+		
+
+Other useful repositories:
+	1. https://github.com/ethz-asl/maplab
 
