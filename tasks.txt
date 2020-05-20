@@ -46,3 +46,12 @@ Similar Projects
 Other useful repositories:
 	1. https://github.com/ethz-asl/maplab
 
+
+Meeting 2: May 20, 2020
+
+Tasks:
+	1. Try to re-create PULP-SoC (with one camera) on Eagle CAD and estimate the time required for it
+	2. Prepare a list of vendors supplying GAPuino in India
+	3. Focus on low-level programing like interfacing camera with the PULP-SoC
+
+
