@@ -54,4 +54,10 @@ Tasks:
 	2. Prepare a list of vendors supplying GAPuino in India
 	3. Focus on low-level programing like interfacing camera with the PULP-SoC
 
+Updated Tasks:
+	1. Try GAP8 SDK instead of PULP-SDK
+	2. Set-up and use GVSOC virtual platform
+
+
+
 
