@@ -1,0 +1,30 @@
+// https://github.com/VishalSharma0309/nano_drone
+// Operating System: Ubuntu 18.04
+// last updated: May 22, 2020
+
+
+
+
+
+SETTING UP THE GAP-SDK
+
+sudo apt-get install -y build-essential git libftdi-dev libftdi1 doxygen python3-pip libsdl2-dev curl cmake libusb-1.0-0-dev scons gtkwave libsndfile1-dev rsync autoconf automake texinfo libtool pkg-config libsdl2-ttf-dev
+
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+
+	sudo usermod -a -G dialout <username>
+
+	// Logout from your session and login again.
+
+	touch 90-ftdi_gapuino.rules
+	echo 'ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="0666", GROUP="dialout"'> 90-ftdi_gapuino.rules
+	echo 'ATTRS{idVendor}=="15ba", ATTRS{idProduct}=="002b", MODE="0666", GROUP="dialout"'>> 90-ftdi_gapuino.rules
+	sudo mv 90-ftdi_gapuino.rules /etc/udev/rules.d/
+	sudo udevadm control --reload-rules && sudo udevadm trigger
+
+Download and Install the toolchain
+
+	Clone the GAP8 SDK and GAP8/RISC-V toolchain
+
+	git clone https://github.com/GreenWaves-Technologies/gap_sdk.git
+	git clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
