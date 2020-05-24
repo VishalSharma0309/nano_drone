@@ -28,3 +28,45 @@ Download and Install the toolchain
 
 	git clone https://github.com/GreenWaves-Technologies/gap_sdk.git
 	git clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
+
+Configure the SDK
+
+	source gap_sdk/sourceme.sh
+
+	// and select the target board
+
+	// or you can source the target board directly
+
+	config/gapuino.sh : GAPuino GAP8 v1
+	config/gapuino_v2.sh : GAPuino GAP8 v2
+	config/gapoc_a.sh : Gapoc GAP8 v1
+	configs/gapoc_a_v2.sh : Gapoc GAP8 v2
+
+
+
+OpenOCD
+
+	Read: http://openocd.org/doc-release/README
+
+	Packags Required	
+	- make
+	- libtool
+	- pkg-config >= 0.23 (or compatible)
+	- autoconf >= 2.64
+	- automake >= 1.9
+	- texinfo
+
+	export GAPY_OPENOCD_CABLE=interface/ftdi/olimex-arm-usb-ocd-h.cfg
+
+Build SDK
+
+	cd gap_sdk
+	make all
+
+Getting the Autotiler
+	
+	make autotiler
+
+
+
+
