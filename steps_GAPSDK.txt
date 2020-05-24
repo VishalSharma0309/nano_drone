@@ -76,7 +76,9 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 8. Compiling, running and debugging
 
 	source ~/gap_sdk/configs/gapuino_v2.sh
-	// this file has to be sourced everytime
+	// refer to (3) to select which platform to choose
+	// this file has to be sourced everytime for every terminal
+	// can be added to ~/.bashrc file
 
 	// Finally try a test project. First connect your GAPuino to your PCs USB port and then type:	
 	cd ~/gap_sdk/examples/pmsis/helloworld
@@ -88,6 +90,11 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 	make gvsoc
 
 10. To run a program on the virtual platform
+
+	source ~/gap_sdk/configs/gapuino_v2.sh
+	// refer to (3) to select which platform to choose
+	// this file has to be sourced everytime for every terminal
+	// can be added to ~/.bashrc file
 
 	// for example the program used in (8)	
 	cd ~/gap_sdk/examples/pmsis/helloworld
