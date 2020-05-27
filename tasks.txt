@@ -46,6 +46,7 @@ Similar Projects
 Other useful repositories:
 	1. https://github.com/ethz-asl/maplab
 
+-----------------------------------------------------------------------
 
 Meeting 2: May 20, 2020
 
@@ -57,6 +58,20 @@ Tasks:
 Updated Tasks:
 	1. Try GAP8 SDK instead of PULP-SDK
 	2. Set-up and use GVSOC virtual platform
+
+
+------------------------------------------------------------------------
+
+
+Meeting 3: May 27, 2020
+
+Tasks: 
+	1. Simulating more complicated programs on GVSOC platform
+	2. Try to read how to interface 2 cameras with the GAP SoC
+	3. Login into Thanos (windows server) to use Altium
+	4. Read on ETH Zurich's recent work
+
+
 
 
 
