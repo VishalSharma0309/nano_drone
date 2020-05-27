@@ -1,7 +1,10 @@
 // https://github.com/VishalSharma0309/nano_drone
 // Operating System: Ubuntu 18.04
-// last updated: May 25, 2020
+// last updated: May 27, 2020
 
+
+
+// Refer: https://greenwaves-technologies.com/gvsoc-the-full-system-simulator-for-profiling-gap-applications/
 
 GVSOC Highlights:
 	* functionally equivalent to the real chip
