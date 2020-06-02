@@ -1,6 +1,6 @@
 // https://github.com/VishalSharma0309/nano_drone
 // Operating System: Ubuntu 18.04
-// last updated: May 24, 2020
+// last updated: June 2, 2020
 
 
 SETTING UP THE GAP-SDK
@@ -120,5 +120,26 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 	// for more options on GVOC platform
 	https://gvsoc.readthedocs.io/en/latest/
 
+
+11. Debugging Programs
+	cd ~/gap_sdk
+	source configs/gapuino_v2.sh
+	make clean all gdbserver
+
+	// cd to the program to run
+	riscv32-unknown-elf-gdb BUILD/GAP8/GCC_RISCV/test
+
+	// Once gdb has loaded connect to the gdbserver on the target
+	(gbd) target remote localhost:1234
+	Remote debugging using localhost:1234
+
+12. Documentation
+	cd ~/gap_sdk
+	make docs
+
+	cd docs
+	make pdf
+
+	
 
 
