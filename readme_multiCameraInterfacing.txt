@@ -41,4 +41,30 @@ Consists of two portions:
 1.2 Parallel Data Signals
 -------------------------
 
+	* 8-bit parallel link connects to the video data bus for an image sensor
+	* Provides Vertical SYNC (VSYNC), Horizontal SYNC (HSYNC) and Pixel Clock (PCLK) timing signals
+	* The parallel interface is Unidirectional (camera to MCU)
 
+
+
+
+-------------------------------
+TYPICAL INTERCONNECTION
+-------------------------------
+
+Required PINS: 
+SDA, SCL, D7:0, PCLK, VSYNC, HREF
+
+
+--------------------------------
+FRAME RATES
+--------------------------------
+
+			  Maximum supported PCLK
+Theoretical Frame Rate =  ____________________________________________
+
+			  Horizontal size * Vertical size * Bytes/Pixel
+
+Bytes/pixel = 2 (since each pixel takes 2 PCLK cycles- one for each byte) 
+
+	* In practice, the actual rate is slower.
