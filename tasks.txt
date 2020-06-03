@@ -77,6 +77,14 @@ Tasks:
 
 Meeting 4: June 3, 2020
 
+Tasks:
+	1. Study the internal architechture of GAP8
+	2. Study different camera interfacing protocols
+	3. Try running examples codes and then build on that.
+
+
+----------------------------------------------------------------------- 
+
 
 
 
