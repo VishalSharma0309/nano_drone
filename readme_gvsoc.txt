@@ -1,14 +1,19 @@
 // https://github.com/VishalSharma0309/nano_drone
 // Operating System: Ubuntu 18.04
-// last updated: May 27, 2020
+// last updated: June 4, 2020
 
 
-
-// Refer: https://greenwaves-technologies.com/gvsoc-the-full-system-simulator-for-profiling-gap-applications/
 
 GVSOC Highlights:
 	* functionally equivalent to the real chip
 	* compiled code that can run on the chip will also run as it is on simulator
+
+--------------------------------------
+GVSOC on GAP SDK
+--------------------------------------
+
+
+// Refer: https://greenwaves-technologies.com/gvsoc-the-full-system-simulator-for-profiling-gap-applications/
 
 1. Setting up the GVSOC Virtual Platform
 
@@ -44,5 +49,62 @@ GVSOC Highlights:
 	gtkwave /home/vishal/gap_sdk/examples/pmsis/test_features/cluster_fork/BUILD/GAP8_V2/GCC_RISCV/view.gtkw
 
 	// this command initiates a graphical interface which can be used to understand the happening inside the chip
+
+
+
+-------------------------------
+GVSOC on PULP SDK
+-------------------------------
+
+usage: pulp-run [--help] [--platform {gvsoc,board,rtl,hsa,fpga}]
+                [--binary BINARY] [--dir PATH] [--src-dir PATH] [--commands]
+                [--chip CHIP] [--dev] [--no-warnings] [--config CONFIG_NAME]
+                [--reentrant] [--config-file CONFIG_FILE]
+                [--config-user CONFIG_USER] [--config-opt CONFIGOPT]
+                [--property PROPERTIES] [--no-debug-syms] [--trace TRACES]
+                [--trace-level TRACE_LEVEL] [--vcd] [--event EVENTS]
+                [--event-tags EVENT_TAGS] [--event-format FORMAT] [--gtkw]
+                [commands [commands ...]]
+
+Launch a test on the specified architecture.
+
+positional arguments:
+  commands              a command to be executed
+
+optional arguments:
+  --help                show this help message and exit
+  --platform {gvsoc,board,rtl,hsa,fpga}
+                        specify the platform. Default: None.
+  --binary BINARY       specify the binary to be loaded
+  --dir PATH            specify the test directory containing the binaries and
+                        from which the execution must be launched.
+  --src-dir PATH        specify the test source directory
+  --commands            show the available commands.
+  --chip CHIP           Specify target chip
+  --dev                 activate development mode (more advanced options)
+  --no-warnings         deactivate warnings
+  --config CONFIG_NAME  specify the system configuration name
+  --reentrant           This script was called was pulp-run
+  --config-file CONFIG_FILE
+                        specify the system configuration file
+  --config-user CONFIG_USER
+                        specify the user configuration file
+  --config-opt CONFIGOPT
+                        specify configuration option (DEPRECATED)
+  --property PROPERTIES
+                        specify configuration property
+  --no-debug-syms       Deactivate debug symbol parsing, which can then be
+                        used for traces
+  --trace TRACES        Specify gvsoc trace
+  --trace-level TRACE_LEVEL
+                        Specify trace level
+  --vcd                 Activate VCD traces
+  --event EVENTS        Specify gvsoc event (for VCD traces)
+  --event-tags EVENT_TAGS
+                        Specify gvsoc event through tags(for VCD traces)
+  --event-format FORMAT
+                        Specify events format (vcd or fst)
+  --gtkw                Dump events to pipe and open gtkwave in interactive
+                        mode
 
 
