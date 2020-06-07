@@ -59,6 +59,34 @@ GVSOC on GAP SDK
 
 	make clean all run platform=gvsoc runner_args="<GVSOC options>"
 
+	____________________________
+	RUNNING CPI CAMERAS ON GVSOC
+	____________________________
+
+
+		1. Passing file to GVSOC
+ 
+		The flabs that need to be passed to the gvsoc simulator can be specified with the CONFIG_OPT variable. Some uses of this variable can be seen in the hyperram, cpi, i2s or file system examples :
+
+		override CONFIG_OPT += hyperram
+		override CONFIG_OPT += hyperflash
+		override CONFIG_OPT += hyperflash hyperflash/fs/files=$(CURDIR)/test.c hyperflash/fs/files=$(CURDIR)/hello.txt hyperflash/fs/files$(CURDIR)/hello2.txt
+		override CONFIG_OPT += camera=himax system/camera/image-stream=$(CURDIR)/imgTest.pgm
+		override CONFIG_OPT += camera=ov7670 system/camera/image=$(CURDIR)/frame0.img
+
+
+		2. Passing multiple files to GVSOC
+
+		override CONFIG_OPT += camera=himax system/camera/image-stream=$(CURDIR)/imgTest%d.pgm
+		// This will stream imgTest0 then imgTest1 and so on to GVSOC
+
+		
+		3. Particularly for camera interfacing include both the lines in the Makefile
+
+		override config_args += --config-opt=camera/image-stream=$(CURDIR)/frame_%d.pgm
+		override config_args += --config-opt=display/enabled=true
+
+
 
 -------------------------------
 GVSOC on PULP SDK
