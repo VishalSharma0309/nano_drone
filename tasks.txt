@@ -103,9 +103,19 @@ To Discuss:
 		- found support for it, works similar to the GAP GVSOC
 		- Unable to compile using it, will try to re-install the PULP SDK
 
+	
+	4. GAPuino
+		- I have mailed green-wave technologies
+
 
 ----------------------------------------------------------------------- 
 
+Meeting 5: June 10, 2020
 
 
+Tasks:
+	1. Understand how CPI works in GAP and try simulating more than 1 cameras on GVSOC
+	2. Try to make more advanced applications run
+	
 
+-------------------------------------------------------------------------
