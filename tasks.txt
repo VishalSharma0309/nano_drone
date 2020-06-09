@@ -84,6 +84,26 @@ Tasks:
 	4. Try running examples codes and then build on that
 
 
+To Discuss:
+
+	1. GVSOC:
+		1.1 Codes for HIMAX are now working: pmsis: lcd, stream
+		1.2 Complicated applications such as pedestrian detection and edge detection are working
+		1.3 Support for two other modules: GC0308, OV5640
+			- couldn't get their code working, some problem in the libraries
+
+	2. Camera Interfacing Protocols:
+		2.1 CPI supports multi-camera interfacing but not simultaneous use
+			- maybe we can trigger different camera modules in succession, if done fast enough should be useful
+		2.2 CSI-2,3 is MIVI propritiery, supports multi-camera system for high-bandwidth, used in modern mobiles
+		2.3 Camera modules are available supporting UART, (SPI+I2C) cameras, maybe can be used along with CPI
+			- difficult to find QVGA ULP modules supporting these protocols
+
+	3. GVSOC support for PULP
+		- found support for it, works similar to the GAP GVSOC
+		- Unable to compile using it, will try to re-install the PULP SDK
+
+
 ----------------------------------------------------------------------- 
 
 
