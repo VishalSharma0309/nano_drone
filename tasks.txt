@@ -1,6 +1,7 @@
 // https://github.com/VishalSharma0309/nano_drone
 
 
+-----------------------------------------------------------------------------
 Meeting 1: May 15, 2020
 
 Taks:
@@ -119,3 +120,13 @@ Tasks:
 	
 
 -------------------------------------------------------------------------
+
+Meeting 6: JUne 17, 2020 
+
+Tasks:
+	1. Refine and test further the two camera interfacing code
+	2. Try higher level applications such as Canny Edge Detection
+	3. Develop low-level programs for SPI and GPIO (to interface with main MCU)
+	4. Other sensors required within the drone? If yes, which interface and develop code
+
+---------------------------------------------------------------------------
