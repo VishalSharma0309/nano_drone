@@ -1,6 +1,6 @@
 // https://github.com/VishalSharma0309/nano_drone
 // Operating System: Ubuntu 18.04
-// last updated: May 21, 2020
+// last updated: June 19, 2020
 
 
 
@@ -77,15 +77,28 @@ To change:
 	2.3 Setting up PULP-SDK
 	
 	cd /opt/riscv
-	git clone https://github.com/pulp-platform/pulp-builder.git
+	git clone https://github.com/pulp-platform/pulp-builder.git --recurse-submodules
 	cd pulp-builder
 
-	* NOTE: update the pulpissimo.sh and change export pulpissimo.sh to
-	source $PULP_SDK_HOME/configs/pulpissimo.sh
-	won't run otherwise	
+	NOTE: The git clone command for pulp-builder doesn't clone the sub-modules properly for some reason
+		To make this work we have to remove all the folders created for these sub-modules and git clone them individually
+
+	Removing the sub-module folders (empty)
+	sudo rm -rf json-tools plptest pulp-configs pulp-runtime runner
+
+	Git Cloning these individually
+	sudo -s
+	git clone https://github.com/pulp-platform/json-tools.git
+	git clone https://github.com/pulp-platform/plptest.git
+	git clone https://github.com/pulp-platform/pulp-configs.git
+	git clone https://github.com/pulp-platform/pulp-runtime.git
+	git clone https://github.com/pulp-platform/runner.git
 	
 	source configs/pulpissimo.sh
+	source configs/pulp.sh
+
 	cd configs
+	chmod +x pulpissimo.sh common.sh
 	./pulpissimo.sh
 	./common.sh
 	cd ..	
@@ -93,6 +106,10 @@ To change:
 	./scripts/clean
 
 	./scripts/deprecated/build-gvsoc
+	* Note: Did not work for some reason
+	L_DIR=/opt/riscv/pulp-builder/install/ws TARGET_INSTALL_DIR=/opt/riscv/pulp-builder/install
+make: *** archi: No such file or directory.  Stop.
+	
 
 	./scripts/build-runtime
 
