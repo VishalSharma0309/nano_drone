@@ -1,3 +1,6 @@
 [submodule "pmsis_api"]
 	path = pmsis_api
 	url = https://github.com/GreenWaves-Technologies/pmsis_api
+[submodule "gap_sdk"]
+	path = gap_sdk
+	url = https://github.com/VishalSharma0309/gap_sdk
