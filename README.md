@@ -4,7 +4,7 @@
 To develop an autonomous nano drone with an end-to-end closed-loop visual pipeline for autonomous navigation based on a CNN model.
 
 ### Architechture:
-[![Master Slave Architechture][imgs/nano_drone.jpg]]
+![Master Slave Architechture](imgs/nano_drone.jpg)
 
 ### Repository Structure:
 
