@@ -1,7 +1,7 @@
 # NANO DRONE PROJECT
 
 ### Objective:
-To develop an autonomous nano drone with an end-to-end closed-loop visual pipeline for autonomous navigation based on a CNN based model
+To develop an autonomous nano drone with an end-to-end closed-loop visual pipeline for autonomous navigation based on a CNN model.
 
 ### Repository Structure
 

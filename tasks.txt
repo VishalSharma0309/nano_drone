@@ -129,4 +129,10 @@ Tasks:
 	3. Develop low-level programs for SPI and GPIO (to interface with main MCU)
 	4. Other sensors required within the drone? If yes, which interface and develop code
 
+	GPIO code
+	Basic code: ~/gap_sdk/examples/native/pulpos/periph/gpio/input
+	Advanced: ~/gap_sdk/examples/pmsis/test_periph/gpio_input
+
+	SPI code
+	
 ---------------------------------------------------------------------------
