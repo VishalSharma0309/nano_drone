@@ -3,7 +3,10 @@
 ### Objective:
 To develop an autonomous nano drone with an end-to-end closed-loop visual pipeline for autonomous navigation based on a CNN model.
 
-### Repository Structure
+### Architechture:
+![master slave architechture](https://github.com/VishalSharma0309/nano_drone/tree/master/imgs/nano_drone.jpg)
+
+### Repository Structure:
 
 ```
 nano_drone
