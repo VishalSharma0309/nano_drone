@@ -6,6 +6,19 @@ To develop an autonomous nano drone with an end-to-end closed-loop visual pipeli
 ### Architechture:
 ![Master Slave Architechture](imgs/nano_drone.jpg)
 
+    #### Motor Control 
+    ![Motor Control](imgs/motor_control.png)
+
+        ##### On-board Sensors
+        Here is a table with the sensors listed that the crazyflie eventually uses for state estimation:
+        ![on-board sensors](imgs/sensors.png)
+
+        ##### State Estimation
+        There are 2 state estimators in the crazyflie:
+        * Complementary Filter
+        * Extended Kalman Filter
+
+        
 ### Repository Structure:
 
 ```
