@@ -6,7 +6,7 @@ To develop an autonomous nano drone with an end-to-end closed-loop visual pipeli
 ### Architechture:
 ![Master Slave Architechture](imgs/nano_drone.jpg)
 
-    <br>
+
 #### Motor Control 
 ![Motor Control](imgs/motor_control.png)
 
