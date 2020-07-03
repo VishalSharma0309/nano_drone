@@ -1,6 +1,6 @@
 // https://github.com/VishalSharma0309/nano_drone
 // Operating System: Ubuntu 18.04
-// last updated: June 2, 2020
+// last updated: July 6, 2020
 
 
 SETTING UP THE GAP-SDK
@@ -26,7 +26,7 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 
 	Clone the GAP8 SDK and GAP8/RISC-V toolchain
 
-	git clone https://github.com/GreenWaves-Technologies/gap_sdk.git
+	git clone https://github.com/VishalSharma0309/gap_sdk.git
 	git clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
 
 3. Configure the SDK

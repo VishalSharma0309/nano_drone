@@ -143,8 +143,6 @@ Tasks:
 	1. Try compiling CNN programs on GVSOC 
 	2. Try importing parts of dronet algorithm to GAP SDK GVSOC platform
 	3. Try creating low level programs for STM32 as well and find tools to verify them
-
------------------------------------------------------------------------------
-	2. Try to emulate dronet on GVSOC
+	4. Try to emulate dronet on GVSOC
 
 ---------------------------------------------------------------------------
