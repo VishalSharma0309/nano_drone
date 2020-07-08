@@ -28,6 +28,7 @@ There are 2 state estimators in the crazyflie:
     |   readme_gvsoc.txt (to setup and use GVSOC on GAP SDK and PULP SDK)
     |   readme_multiCameraInterfacing.txt (research on interfacing multi-cameras on GAP SoC)
     |   readme_pulpDroNet.txt (to setup PULP DroNet)
+    |   readme_setupCentOS.txt (to setup toolchain & SDK on centOS)
     |   readme_vncsteps.txt (to vnc into remote PCs)
     |   tasks.txt (weekly meeting notes)
     │
@@ -101,4 +102,5 @@ There are 2 state estimators in the crazyflie:
     |  
     └───reference_manuals
     |        
-
+    └───spif-driver
+    |

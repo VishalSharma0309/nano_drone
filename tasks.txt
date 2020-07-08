@@ -146,3 +146,12 @@ Tasks:
 	4. Try to emulate dronet on GVSOC
 
 ---------------------------------------------------------------------------
+
+Meeting 8: July 8, 2020
+
+Tasks:
+	1. Compile the RISCV Toolchain for CentOS
+	2. Install and setup PULP-SDK and GAP-SDK on CentOS
+	3. Try compiling programs on GAPuino
+
+----------------------------------------------------------------------------
