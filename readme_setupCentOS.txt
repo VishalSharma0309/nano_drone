@@ -78,6 +78,9 @@ SETTING UP PULP-RISCV-GNU-TOOLCHAIN
 
 	yumdownloader --destdir ~/rpm --resolve autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev
 
+	pip3 install SCons
+
+
 4. Activate conda environment
 
 	conda activate pulp
@@ -91,13 +94,20 @@ SETTING UP PULP-RISCV-GNU-TOOLCHAIN
 
 6. PATH Defination: Add the following to your ~/.bashrc file
 
-	export PULP_RISCV_GCC_TOOLCHAIN=/users/micasgst/vsharma/riscv
+	export PULP_RISCV_GCC_TOOLCHAIN=/users/micasgst/vsharma/riscv/bin
 	export VSIM_PATH=/users/micasgst/vsharma/pulpissimo/sim
 
 
+CMAKE_C_COMPILER=/users/micasgst/vsharma/riscv/bin/riscv32-unknown-elf-gcc
 
 
-	
+conda install automake
+conda install pkh-config
+conda install libtool
 
-	
+cd my-dir;
+rpm2cpio to-install.rpm | cpio -idv
+
+
+	export LD_LIBRARY_PATH=/users/micasgst/vsharma/anaconda3/envs/pulp/lib:$LD_LIBRARY_PATH
 
