@@ -80,6 +80,9 @@ SETTING UP PULP-RISCV-GNU-TOOLCHAIN
 
 	pip3 install SCons
 
+	conda install gcc_linux-64
+
+	conda install -c anaconda zlib 
 
 4. Activate conda environment
 
@@ -87,14 +90,17 @@ SETTING UP PULP-RISCV-GNU-TOOLCHAIN
 
 5. Installation (PULP) 
 
-	./configure --prefix=/users/micasgst/vsharma/riscv --with-arch=rv32imc --with-cmodel=medlow --enable-multilib
-	(where /users/micasgst/vsharma/ is the home directory, you can obtain yours by cd and then pwd)
+	export PATH="/volume1/users/vsharma/riscv/bin:$PATH"
+	
+
+	./configure --prefix=/volume1/users/vsharma/riscv --with-arch=rv32imc --with-cmodel=medlow --enable-multilib
+	(please add --prefix as where you want to build the toolchain)
 	
 	make
 
 6. PATH Defination: Add the following to your ~/.bashrc file
 
-	export PULP_RISCV_GCC_TOOLCHAIN=/users/micasgst/vsharma/riscv/bin
+	export PULP_RISCV_GCC_TOOLCHAIN=/volume1/users/vsharma/riscv/bin
 	export VSIM_PATH=/users/micasgst/vsharma/pulpissimo/sim
 
 

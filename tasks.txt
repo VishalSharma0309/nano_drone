@@ -155,3 +155,11 @@ Tasks:
 	3. Try compiling programs on GAPuino
 
 ----------------------------------------------------------------------------
+
+Meeting 9: July 15, 2020
+
+Tasks:
+	1. Setting up PULP, GAP-SDK on CentOS
+	2. Developing CNN algorithms on GVSOC
+
+-----------------------------------------------------------------------------
