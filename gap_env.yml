@@ -1,9 +1,12 @@
-name: pulp
-channels:
+name: gap
+channels: 
   - m-labs
   - psi4
   - biobuilds
   - bioconda
+  - timvideos
+  - tfors
+  - anaconda
   - conda-forge
   - defaults
 dependencies:
@@ -12,10 +15,15 @@ dependencies:
   - alabaster=0.7.12=py_0
   - atk=2.36.0=0
   - atk-1.0=2.36.0=haf93ef1_0
+  - asn1crypto=1.3.0=py37_0
+  - autoconf=2.69=pl526h14c3975_9
+  - automake=1.16.1=pl526_1003
   - babel=2.8.0=py_0
   - bitstring=3.1.5=py36_1
   - brotlipy=0.7.0=py36h8c4c3a4_1000
   - bzip2=1.0.8=h516909a_2
+  - binutils_impl_linux-64=2.31.1=h6176602_1
+  - binutils_linux-64=2.31.1=h6176602_9
   - ca-certificates=2020.4.5.1=hecc5488_0
   - cairo=1.16.0=hcf35c78_1003
   - certifi=2020.4.5.1=py36_0
@@ -23,9 +31,11 @@ dependencies:
   - chardet=3.0.4=py36h9f0ad1d_1006
   - chrpath=0.16=h14c3975_1001
   - cloog=0.18.0=0
-  - cmake=3.7.1=700
   - cryptography=2.9.2=py36h45558ae_0
   - curl=7.69.1=h33f0ec9_0
+  - certifi=2019.11.28=py37_0
+  - cmake=3.16.2=h28c56e5_1
+  - curl=7.67.0=hbc83047_0
   - dbus=1.13.6=he372182_0
   - docutils=0.16=py36h9f0ad1d_1
   - doxygen=1.8.18=hd1b7508_0
@@ -50,6 +60,13 @@ dependencies:
   - gst-plugins-base=1.14.5=h0935bb2_2
   - gstreamer=1.14.5=h36ae1b5_2
   - gtk2=2.24.32=h586f36d_1
+  - gcc_impl_linux-64=7.3.0=habb00fd_1
+  - gcc_linux-64=7.3.0=h553295d_9
+  - gettext=0.19.8.1=hd7bead4_3
+  - git-lfs=2.9.2=0
+  - gtkwave=3.3.91=0
+  - gxx_impl_linux-64=7.3.0=hdf63c60_1
+  - gxx_linux-64=7.3.0=h553295d_9
   - harfbuzz=2.4.0=h9f30f68_3
   - icu=64.2=he1b5a44_1
   - idna=2.9=py_1
@@ -77,7 +94,6 @@ dependencies:
   - libssh2=1.9.0=hab1572f_2
   - libstdcxx-ng=9.2.0=hdf63c60_2
   - libtiff=4.1.0=hc3755c2_3
-  - libusb=1.0.20=0
   - libuuid=2.32.1=h14c3975_1000
   - libuv=1.34.0=h516909a_0
   - libvorbis=1.3.6=he1b5a44_2
@@ -86,6 +102,10 @@ dependencies:
   - libxkbcommon=0.10.0=he1b5a44_0
   - libxml2=2.9.10=hee79883_0
   - lz4-c=1.9.2=he1b5a44_1
+  - libtool=2.4.6=h14c3975_1002
+  - libudev-cos6-x86_64=147=h1341992_0
+  - libudev-devel-cos6-x86_64=147=h1341992_0
+  - libusb=1.0.23=he1b5a44_0
   - mad=0.15.1b=he1b5a44_0
   - markupsafe=1.1.1=py36h8c4c3a4_1
   - mpc=1.1.0=h04dde30_1007
@@ -93,6 +113,18 @@ dependencies:
   - ncurses=6.1=hf484d3e_1002
   - nspr=4.25=he1b5a44_0
   - nss=3.47=he751ad9_0
+  - m4=1.4.18=h4e445db_0
+  - olefile=0.46=py37_0
+  - perl=5.26.2=h14c3975_0
+  - pillow=7.0.0=py37hb39fc2d_0
+  - pkg-config=0.29.2=h516909a_1006
+  - popt=1.16=h299ea2f_2002
+  - prettytable=0.7.2=py_3
+  - pycparser=2.19=py37_0
+  - pyelftools=0.26=py_1
+  - pyopenssl=19.1.0=py37_0
+  - pysocks=1.7.1=py37_0
+  - python=3.7.6=h0371630_2
   - openssl=1.1.1g=h516909a_0
   - packaging=20.4=pyh9f0ad1d_0
   - pango=1.42.4=h7062337_4
@@ -112,7 +144,6 @@ dependencies:
   - qt=5.9.7=h0c104cb_3
   - readline=8.0=hf8c457e_0
   - requests=2.23.0=pyh8c360ce_2
-  - rhash=1.3.6=h14c3975_1001
   - scons=3.1.2=py36h9f0ad1d_1
   - sdl2=2.0.10=he1b5a44_0
   - setuptools=46.4.0=py36h9f0ad1d_0
@@ -128,6 +159,8 @@ dependencies:
   - sphinxcontrib-serializinghtml=1.1.4=py_0
   - sqlite=3.30.1=hcee41ef_0
   - swig=4.0.1=he1b5a44_0
+  - rhash=1.3.8=h1ba5d50_0
+  - rsync=3.1.3=hed695b0_1002
   - texinfo=6.7=pl526h46ee950_0
   - tk=8.6.10=hed695b0_0
   - urllib3=1.25.9=py_0
@@ -147,6 +180,7 @@ dependencies:
   - xz=5.2.5=h516909a_0
   - zlib=1.2.11=h516909a_1006
   - zstd=1.4.4=h6597ccf_3
+  - wget=1.20.1=h20c2e04_0
   - pip:
     - artifactory==0.1.17
     - attrs==19.3.0
@@ -170,4 +204,6 @@ dependencies:
     - twisted==20.3.0
     - xlsxwriter==1.2.8
     - zope-interface==5.1.0
-prefix: /users/micasgst/vsharma/anaconda3/envs/pulp
+prefix: /users/micasgst/vsharma/anaconda3/envs/gap
+
+  
