@@ -26,7 +26,7 @@ dependencies:
   - binutils_linux-64=2.31.1=h6176602_9
   - ca-certificates=2020.4.5.1=hecc5488_0
   - cairo=1.16.0=hcf35c78_1003
-  - certifi=2020.4.5.1=py36_0
+  - certifi=2020.4.5.1=py37_0
   - cffi=1.14.0=py36hd463f26_0
   - chardet=3.0.4=py36h9f0ad1d_1006
   - chrpath=0.16=h14c3975_1001

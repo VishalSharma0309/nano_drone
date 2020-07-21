@@ -72,7 +72,7 @@ conda install -y -c conda-forge --file requirements.txt
 # Load config for gapuino_v2
 source ./configs/gapuino_v2.sh
 # add toolchain bin folder to path
-export PATH="/data/drt/Codes/Hardware/GAP8/gap8_env/lib/gap_riscv_toolchain/bin/:$PATH"
+export PATH="/volume1/users/vsharma/gap8_env/lib/gap_riscv_toolchain/bin/:$PATH"
 
 # Make the SDK
 make all
