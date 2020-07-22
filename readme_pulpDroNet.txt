@@ -95,17 +95,17 @@ To change:
 	git clone https://github.com/pulp-platform/runner.git
 	
 	source configs/pulpissimo.sh
-	source configs/pulp.sh
+	//source configs/pulp.sh
 
-	cd configs
-	chmod +x pulpissimo.sh common.sh
-	./pulpissimo.sh
-	./common.sh
-	cd ..	
+	//cd configs
+	//chmod +x pulpissimo.sh common.sh
+	//./pulpissimo.sh
+	//./common.sh
+	//cd ..	
 
-	./scripts/clean
+	//./scripts/clean
 
-	./scripts/deprecated/build-gvsoc
+	//./scripts/deprecated/build-gvsoc
 	* Note: Did not work for some reason
 	L_DIR=/opt/riscv/pulp-builder/install/ws TARGET_INSTALL_DIR=/opt/riscv/pulp-builder/install
 make: *** archi: No such file or directory.  Stop.
@@ -113,28 +113,32 @@ make: *** archi: No such file or directory.  Stop.
 
 	./scripts/build-runtime
 
-	source sdk-setup.sh
+	//source sdk-setup.sh
 
-	cd /opt/riscv
+	cd ~/nano_drone
 
 	pip3 install openpyxl==2.6.4
 
+	BUILD GVSOC
+	
+
 	git clone https://github.com/pulp-platform/pulp-sdk.git -b master
 
+	
 	cd pulp-sdk
 
-	source configs/pulpissimo.sh
+	source configs/pulp.sh
 
 	make all
 
-	export PULP_SDK_HOME=/opt/riscv/pulp-sdk
+	export PULP_SDK_HOME=~/nano-drone/pulp-sdk
 
 
 	2.3 Install Simulation and implementation
 
 		2.3.1 Install QuestaSim
 	
-		cd /opt/riscv
+		cd ~/nano_drone
 
 		git clone https://github.com/pulp-platform/pulpissimo.git
 
@@ -169,7 +173,7 @@ make: *** archi: No such file or directory.  Stop.
 
 	2.4 Download the Basic Kernels
 	
-	cd ./pulp-dronet
+	cd ./nao_drone/pulp-dronet
 	git submodule init -- src/autotiler
 	git submodule update -- src/autotiler
 

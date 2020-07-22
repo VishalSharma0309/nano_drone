@@ -19,3 +19,6 @@
 [submodule "pulp-riscv-gnu-toolchain"]
 	path = pulp-riscv-gnu-toolchain
 	url = https://github.com/pulp-platform/pulp-riscv-gnu-toolchain
+[submodule "pulp-builder"]
+	path = pulp-builder
+	url = https://github.com/pulp-platform/pulp-builder

@@ -34,7 +34,6 @@ dependencies:
   - freetype=2.10.2=he06d7ca_0
   - fribidi=1.0.9=h516909a_0
   - gawk=5.1.0=h516909a_0
-  - gcc-5=5.2.0=1
   - gdk-pixbuf=2.38.2=h3f25603_3
   - gettext=0.19.8.1=hc5be6a0_1002
   - ghostscript=9.22=hf484d3e_1001
