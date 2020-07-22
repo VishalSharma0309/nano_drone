@@ -58,8 +58,8 @@ conda install -y -c conda-forge git-lfs
 # Make symlink for libftdi
 cp ./gap8_env/bin/libftdi1-config ./gap8_env/bin/libftdi-config
 # Clone git
-git clone https://github.com/GreenWaves-Technologies/gap_sdk.git
-git clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
+#git clone https://github.com/GreenWaves-Technologies/gap_sdk.git
+#git clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
 #Install toolchain
 cd ./gap_riscv_toolchain_ubuntu_18
 ./install_new.sh
@@ -72,7 +72,7 @@ conda install -y -c conda-forge --file requirements.txt
 # Load config for gapuino_v2
 source ./configs/gapuino_v2.sh
 # add toolchain bin folder to path
-export PATH="/volume1/users/vsharma/gap8_env/lib/gap_riscv_toolchain/bin/:$PATH"
+export PATH="/volume1/users/vsharma/nano_drone/gap8_env/lib/gap_riscv_toolchain/bin/:$PATH"
 
 # Make the SDK
 make all

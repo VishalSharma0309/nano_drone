@@ -10,4 +10,4 @@ cd ./gap_sdk
 # Source the settings for V2 board
 source ./configs/gapuino_v2.sh
 # add toolchain bin folder to path
-export PATH="/volume1/users/vsharma/gap8_env/lib/gap_riscv_toolchain/bin/:$PATH"
+export PATH="/volume1/users/vsharma/nano_drone/gap8_env/lib/gap_riscv_toolchain/bin/:$PATH"
