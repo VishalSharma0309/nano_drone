@@ -1,7 +1,0 @@
-/home/vishal/nano_drone/pulp-sdk/build/sdk/json-tools/CMakeFiles/edit_cache.dir
-/home/vishal/nano_drone/pulp-sdk/build/sdk/json-tools/CMakeFiles/install/strip.dir
-/home/vishal/nano_drone/pulp-sdk/build/sdk/json-tools/CMakeFiles/json.dir
-/home/vishal/nano_drone/pulp-sdk/build/sdk/json-tools/CMakeFiles/rebuild_cache.dir
-/home/vishal/nano_drone/pulp-sdk/build/sdk/json-tools/CMakeFiles/list_install_components.dir
-/home/vishal/nano_drone/pulp-sdk/build/sdk/json-tools/CMakeFiles/install/local.dir
-/home/vishal/nano_drone/pulp-sdk/build/sdk/json-tools/CMakeFiles/install.dir

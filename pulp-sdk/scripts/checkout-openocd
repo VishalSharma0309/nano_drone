@@ -1,5 +1,0 @@
-#!/bin/bash -ex
-
-git submodule update --init
-
-git am --signoff < ../../scripts/openocd-pulp.patch
