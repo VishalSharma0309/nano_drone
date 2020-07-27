@@ -31,3 +31,6 @@
 [submodule "pulp-dronet"]
 	path = pulp-dronet
 	url = https://github.com/VishalSharma0309/pulp-dronet
+[submodule "pulpissimo"]
+	path = pulpissimo
+	url = https://github.com/pulp-platform/pulpissimo.git

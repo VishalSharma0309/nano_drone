@@ -29,6 +29,8 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 	git clone https://github.com/VishalSharma0309/gap_sdk.git
 	git clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
 
+3. Install the RISCV Toolchain
+
 3. Configure the SDK
 
 	source gap_sdk/sourceme.sh

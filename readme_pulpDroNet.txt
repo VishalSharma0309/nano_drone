@@ -94,8 +94,8 @@ To change:
 	git clone https://github.com/pulp-platform/pulp-runtime.git
 	git clone https://github.com/pulp-platform/runner.git
 	
-	source configs/pulpissimo.sh
-	//source configs/pulp.sh
+	//source configs/pulpissimo.sh
+	source configs/pulp.sh
 
 	//cd configs
 	//chmod +x pulpissimo.sh common.sh
@@ -131,7 +131,7 @@ make: *** archi: No such file or directory.  Stop.
 
 	make all
 
-	export PULP_SDK_HOME=~/nano-drone/pulp-sdk
+	export PULP_SDK_HOME=/home/vishal/pulp-sdk
 
 
 	2.3 Install Simulation and implementation
@@ -173,13 +173,12 @@ make: *** archi: No such file or directory.  Stop.
 
 	2.4 Download the Basic Kernels
 	
-	cd ./nao_drone/pulp-dronet
+	cd ./pulp-dronet
 	git submodule init -- src/autotiler
 	git submodule update -- src/autotiler
 
 	To check if its done correctly
-	cd ~/nano_drone/pulp-dronet/src/autotiler
-	ls 
+	ls ~/pulp-dronet/src/autotiler 
 
 	Result should be something like this
 	get_tiler.py  include  LICENSE  Makefile  src
@@ -216,36 +215,30 @@ make: *** archi: No such file or directory.  Stop.
 For platform, compilation and target settings set it in the autocompiler/src/config.h file
 
 To configure the PULP-SDK executing in your terminal
-source /opt/riscv/pulp-sdk/configs/gap.sh
+source ~/pulp-sdk/configs/gap.sh
 
 Depending upon your target platform source one of the below scripts
-source /opt/riscv/pulp-sdk/configs/platform-gvsoc.sh  // virtual platform (currently used by me)
-source /opt/riscv/pulp-sdk/configs/platform-board.sh  // if target is either PULP-Shield or GAPuino board
+source ~/pulp-sdk/configs/platform-gvsoc.sh  // virtual platform (currently used by me)
+source ~/pulp-sdk/configs/platform-board.sh  // if target is either PULP-Shield or GAPuino board
 
 
 cd ./pulp-dronet/src
+
+sudo apt-get install gtk2.0
+
 
 make clean conf all
 
 /* THIS COMMAND IS NOT WORKING
 
 Error message:
-/opt/riscv/pulp-sdk/pkg/sdk/dev/install/include/archi/pulp.h:29:46: fatal error: archi/chips/gap/pulp.h: No such file or directory
- #include A_PULP_CHIP_INC(PULP_CHIP_FAMILY_STR)
-                                              ^
-compilation terminated.
-/home/vishal/nano_drone/pulp-dronet/src/build/gap/__rules.mk:58: recipe for target '/home/vishal/nano_drone/pulp-dronet/src/build/gap/PULPDroNet/cl/PULPDronet.o' failed
-make: *** [/home/vishal/nano_drone/pulp-dronet/src/build/gap/PULPDroNet/cl/PULPDronet.o] Error 1
+AttributeError: 'NoneType' object has no attribute 'name'
+/home/vishal/pulp-sdk/pkg/sdk/dev/install/rules/pulp_rt.mk:55: recipe for target 'genconf' failed
+make: *** [genconf] Error 1
 
 */	
 
-/*
 
-Error Message 2:
-Makefile:103: /opt/riscv/pulp-sdk/install/rules/pulp_rt.mk: No such file or directory
-make: *** No rule to make target '/opt/riscv/pulp-sdk/install/rules/pulp_rt.mk'.  Stop.
-
-*/
 
 
 
