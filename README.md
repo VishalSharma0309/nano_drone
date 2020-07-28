@@ -19,6 +19,13 @@ There are 2 state estimators in the crazyflie:
 * Complementary Filter
 * Extended Kalman Filter
 
+###### 1. Complementary Fiter
+The complementary filter is consider a very lightweight and efficient filter which in general only uses the IMU input of the gyroscope (angle rate) and the accelerator. The estimated output is the Crazyflie’s attitude (roll, pitch, yaw) and its altitude (in the z direction). The complementary filter is set as the default state estimator on the Crazyflie firmware.
+![Complementary Filter](imgs/comp_filter.png)
+
+###### 2. Extended Kalman Filter
+The (extended) Kalman filter is an step up in complexity compared to the complementary filter, as it accepts more sensor inputs of both internal and external sensors. It is an recursive filter that estimates the current state of the Crazyflie based on incoming measurements (in combination with a predicted standard deviation of the noise), the measurement model and the model of the system itself.
+![Extended Kalman Filter](imgs/kalman_filter.png)
         
 ### Repository Structure:
 
