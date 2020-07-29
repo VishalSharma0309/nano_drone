@@ -1,11 +1,12 @@
 # NANO DRONE PROJECT
 
 ### Objective:
-To develop an autonomous nano drone with an end-to-end closed-loop visual pipeline for autonomous navigation based on a CNN model.
+To develop an autonomous nano drone with an end-to-end closed-loop visual pipeline for autonomous navigation based on a CNN model taking input from multiple cameras.
+Read about the original project at:
+https://www.bitcraze.io/tag/ethz/
 
 ### Architechture:
 ![Master Slave Architechture](imgs/nano_drone.jpg)
-
 
 #### Motor Control 
 ![Motor Control](imgs/motor_control.png)
@@ -27,6 +28,23 @@ The complementary filter is consider a very lightweight and efficient filter whi
 The (extended) Kalman filter is an step up in complexity compared to the complementary filter, as it accepts more sensor inputs of both internal and external sensors. It is an recursive filter that estimates the current state of the Crazyflie based on incoming measurements (in combination with a predicted standard deviation of the noise), the measurement model and the model of the system itself.
 ![Extended Kalman Filter](imgs/kalman_filter.png)
         
+### Setting Up
+
+#### Cloning the Repositories
+
+#### For Ubuntu (16 & 18)
+
+##### Setting up GAP-SDK
+Follow the steps mentioned in readme_GAPSDK.txt
+
+##### Setting up PULP-SDK & Compiling PULP-DRONET (incomplete)
+
+#### For CentOS 7 & Other Linux Distros
+
+
+
+
+
 ### Repository Structure:
 
     nano_drone

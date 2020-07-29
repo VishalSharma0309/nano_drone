@@ -1,6 +1,6 @@
 // https://github.com/VishalSharma0309/nano_drone
 // Operating System: Ubuntu 18.04
-// last updated: July 6, 2020
+// last updated: Aug 7, 2020
 
 
 SETTING UP THE GAP-SDK
@@ -22,15 +22,11 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 	sudo mv 90-ftdi_gapuino.rules /etc/udev/rules.d/
 	sudo udevadm control --reload-rules && sudo udevadm trigger
 
-2. Download and Install the toolchain
+2. Install the Toolchain
 
-	Clone the GAP8 SDK and GAP8/RISC-V toolchain
-
-	git clone https://github.com/VishalSharma0309/gap_sdk.git
-	git clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
-
-3. Install the RISCV Toolchain
-
+	cd ~/nano_drone/gap_riscv_toolchain_ubuntu_18
+	sudo ./install.sh
+	
 3. Configure the SDK
 
 	source gap_sdk/sourceme.sh
@@ -44,7 +40,7 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 	config/gapoc_a.sh : Gapoc GAP8 v1
 	configs/gapoc_a_v2.sh : Gapoc GAP8 v2
 
-
+Note: I was working on config/gapuino.sh i.e GAPuino GAP8 v1
 
 4. OpenOCD
 
@@ -62,27 +58,33 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 
 5. Build SDK
 
-	cd gap_sdk
+	cd ~/gap_sdk
 	make all
 
 6. Getting the Autotiler
 	
 	make autotiler
 
+Note: If unable to get a URL for the same, paste the following link when prompted
+https://greenwaves-technologies.com/autotiler/
+
 7. Getting nntool
 	
 	make nntool
 	
 	Note: make sure you have tensorflow 1.15.0 installed and not 2.0
+	To install for python3 (upto 3.7):
+	python3 -m pip install tensorflow==1.15.0
 
 8. Compiling, running and debugging
 
-	source ~/gap_sdk/configs/gapuino_v2.sh
-	// refer to (3) to select which platform to choose
-	// this file has to be sourced everytime for every terminal
-	// can be added to ~/.bashrc file
-
-	// Finally try a test project. First connect your GAPuino to your PCs USB port and then type:	
+	source ~/gap_sdk/configs/gapuino.sh
+	- Refer to (1) to select which platform to choose
+	- This file has to be sourced everytime for every terminal
+	- Can be added to ~/.bashrc file as 
+	
+	Finally try a test project. First connect your GAPuino to your PCs USB port and then type:	
+	
 	cd ~/gap_sdk/examples/pmsis/helloworld
 	make clean all run	
 
@@ -91,14 +93,10 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 	cd ~/gap_sdk
 	make gvsoc
 
-10. To run a program on the virtual platform
+10. To run a program on the GVSOC virtual platform
 
-	source ~/gap_sdk/configs/gapuino_v2.sh
-	// refer to (3) to select which platform to choose
-	// this file has to be sourced everytime for every terminal
-	// can be added to ~/.bashrc file
-
-	// for example the program used in (8)	
+	source ~/gap_sdk/configs/gapuino.sh
+	
 	cd ~/gap_sdk/examples/pmsis/helloworld
 	make clean all run platform=gvsoc
 
