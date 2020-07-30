@@ -31,6 +31,29 @@ The (extended) Kalman filter is an step up in complexity compared to the complem
 ### Setting Up
 
 #### Cloning the Repositories
+Go to the home directory
+```
+$ cd
+``` 
+
+Clone the project repository
+```
+$ git clone --recursive https://github.com/VishalSharma0309/nano_drone
+```
+
+Clone the following separately
+1. GAP SDK <br>
+``` 
+$ git clone --recursive https://github.com/VishalSharma0309/gap_sdk
+```
+2. PULP SDK <br>
+```
+$ git clone --recursive https://github.com/VishalSharma0309/pulp-sdk
+```
+3. PULP DroNet <br>
+```
+$ git clone --recursive https://github.com/VishalSharma0309/pulp-dronet
+```
 
 #### For Ubuntu (16 & 18)
 
@@ -41,11 +64,20 @@ Follow the steps mentioned in readme_GAPSDK.txt
 Follow the steps mentioned in readme_pulpDroNet.txt
 
 #### For CentOS 7 & Other Linux Distros
+Follow the steps mentioned in readme_setupCentOS.txt (incomplete)
 
+### Running Programs on GVSOC
 
+#### Setting-up & using GVSOC: Documentation
+Please read readme_gvsoc.txt 
 
+```
+$ source ~/gap_sdk/configs/gapuino.sh 
+$ cd <to the application to run>
+$ make all run platform=gvsoc
+```
 
-
+#### 
 ### Repository Structure:
 
     nano_drone
