@@ -38,6 +38,7 @@ The (extended) Kalman filter is an step up in complexity compared to the complem
 Follow the steps mentioned in readme_GAPSDK.txt
 
 ##### Setting up PULP-SDK & Compiling PULP-DRONET (incomplete)
+Follow the steps mentioned in readme_pulpDroNet.txt
 
 #### For CentOS 7 & Other Linux Distros
 
