@@ -76,8 +76,20 @@ $ source ~/gap_sdk/configs/gapuino.sh
 $ cd <to the application to run>
 $ make all run platform=gvsoc
 ```
+#### Run an application with VCD traces
 
-#### 
+VCD traces is used to see what happens on the chip
+```
+make all run platform=gvsoc runner_args="--vcd"
+```
+
+This command produces a Gtkwave script which can be opened using a command described in the command result. Something like:
+```
+gtkwave /home/vishal/gap_sdk/examples/pmsis/test_features/cluster_fork/BUILD/GAP8_V2/GCC_RISCV/view.gtkw
+```
+Example:
+![PMSIS HelloWorld Example](imgs/hello_world.png)
+ 
 ### Repository Structure:
 
     nano_drone
@@ -89,7 +101,12 @@ $ make all run platform=gvsoc
     |   readme_setupCentOS.txt (to setup toolchain & SDK on centOS)
     |   readme_vncsteps.txt (to vnc into remote PCs)
     |   tasks.txt (weekly meeting notes)
-    │
+    │   environment.yml (yml file for GAP-SDK conda environment) (not working)
+    |   gap_env.yml (yml file for both GAP & PULP-SDK conda environment) (not working)
+    |   pulpsdk.yml (yml file for PULP-SDK conda environment) (working)
+    |   setup.sh (automated script to setup GAP-SDK in any linux distro) (under progress)
+    |   start.sh (automated script to run bofore using GAP-SDK)
+    |
     └───gap_riscv_toolchain_ubuntu_18
     │   │   install.sh
     │   │   README.md
@@ -139,6 +156,7 @@ $ make all run platform=gvsoc
     |   └───tools
     |
     └───Papers (relevant research papers)
+    |
     └───pmsis_api
     |   |   LICENSE
     |   |
@@ -147,10 +165,23 @@ $ make all run platform=gvsoc
     |   └───jenkins
     |   └───tools
     |
+    └───pulp-builder
+    |   |   README.md
+    |   |
+    |   └───build
+    |   └───install
+    |   └───json-tools
+    |   └───plptest
+    |   └───pulp-configs
+    |   └───pulp-runtime
+    |   └───runner
+    |   └───scripts
+    |
     └───pulp-dronet
     |   |   README.md
     |   |   LICENSE_README.md
     |   |   LICENSE.apache.md
+    |   |
     |   └───bin
     |   └───dataset
     |   └───imgs
@@ -192,6 +223,8 @@ $ make all run platform=gvsoc
     |   └───pulp-configs
     |   └───pulp-tools
     |   └───scripts
+    |
+    └───pulpissimo
     |
     └───reference_manuals
     |        
