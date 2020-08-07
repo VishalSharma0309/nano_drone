@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+
+import plpflags
+import pulp_config as plpconf
+import argparse
+import os
+import imp
+import plptree
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+parser = argparse.ArgumentParser(description='Run a testset')
+
+parser.add_argument('command', metavar='CMD', type=str, nargs='*',
+                   help='a command to be executed')
+
+parser.add_argument("--config-def", dest="configDef", action="append", default=None, help="Specifies json files containing configurations definition")
+parser.add_argument("--config", dest="configs", action="append", default=[], help="Specifies configuration")
+parser.add_argument("--option", dest="options", action="append", default=[], help="Specify option")
+parser.add_argument("--out-config", dest="out_config", default=None, help="Output configuration")
+parser.add_argument("--config-file", dest="in_config", default=None, help="Input configuration file")
+parser.add_argument(
+    "--config-user", dest="configs_user", action="append", default=[],
+    help="Specify additional user configuration"
+)
+
+
+parser.add_argument(
+    "--input", dest="inputs", default=[], action="append",
+    help="Specify input configuration"
+)
+
+[args, otherArgs] = parser.parse_known_args()	
+
+flags = plpflags.Flags(parser, options=args.options)
+
+if 'gen' in args.command:
+	parser.add_argument("--property", dest="properties", action="append", default=[], help="Specifies a property")
+	parser.add_argument("--makefile", dest="makefile", default=None, help="Path to generated makefile")
+	parser.add_argument("--lib", dest="libs", default=[], action="append", help="Append library to be built")
+
+if 'gen' in args.command:
+	parser.add_argument("--output-dir", dest="outputDir", default=None, help="Output directory")
+	parser.add_argument("--app", dest="apps", default=[], action="append", help="Append application to be built")
+
+args = parser.parse_args()
+
+
+def gen(config):
+	if len(configs) != 1: raise Exception('Only one configuration can be specified to generate flags')
+	flags.gen(config=configs[0], path=args.outputDir, makefile=args.makefile, libs=args.libs, properties=args.properties, apps=args.apps, out_config=args.out_config)
+	return 0
+
+def dump_flags(config):
+	if len(configs) != 1: raise Exception('Only one configuration can be specified to dump flags')
+	flags.dump(config=configs[0])
+	return 0
+
+
+commands = {
+  'gen'         : ['Generate all required files (e.g. makefiles) needed to compile the module', gen],
+  'dump_flags'  : ['Dump flags', dump_flags],
+}
+
+pendingCommands = []
+
+def handleCommands(configSet, log=None):
+
+	global pendingCommands
+
+	if len(args.command) == 0:
+	    parser.print_help()
+	    print ()
+	    print ('Available commands:')
+	    for name, cmd in commands.items():
+	    	print ('  %-10s %s' % (name, cmd[0]))
+	    exit(0)
+	
+	else:
+		pendingCommands = args.command.copy()
+		for cmd in pendingCommands:
+
+			if commands.get(cmd)[1](configSet) != 0:
+				print ()
+				print (bcolors.FAIL + 'FATAL ERROR: the command \'%s\' has failed' % (cmd) + bcolors.ENDC)
+				exit(1)
+
+
+tree = None
+
+if len(args.configs) != 0:
+  for input_config in args.inputs:
+
+      new_tree = plpconf.get_configs(input_config, ini_configs=args.configs_user, ini_configs_dict={'srcdir':os.getcwd()})[0]
+      if tree is None:
+          tree = new_tree
+      else:
+          tree.merge(new_tree)
+
+  for opt in args.configs:
+      key, value = opt.split('=', 1)
+      tree.user_set(key, value)
+
+  configs = [plptree.get_config_tree_from_dict(tree.get_dict())]
+
+else:
+
+  if args.in_config is not None:
+  	config = plpconf.get_config(args.in_config, interpret=True).get_dict()
+  	configs = [plptree.get_config_tree_from_dict(config)]
+  else:
+    configs = []
+    for config in plpconf.get_configs_from_env():
+      configs.append(plptree.get_config_tree_from_dict(config.get_dict()))
+
+if configs != None:
+	handleCommands(configs)

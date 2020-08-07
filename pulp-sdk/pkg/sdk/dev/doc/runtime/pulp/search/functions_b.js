@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['perf_5fenable_5fid',['perf_enable_id',['../bench_8h.html#a62c49ec4b80c1790e0d8335821c45b90',1,'bench.h']]],
+  ['perf_5fprint_5fall',['perf_print_all',['../bench_8h.html#af44e034aa5d2661673a8ef2e93cba09d',1,'bench.h']]],
+  ['perf_5freset',['perf_reset',['../bench_8h.html#a6ebc7de8f3287adfc27c222ca26a2e8a',1,'bench.h']]],
+  ['perf_5fstart',['perf_start',['../bench_8h.html#a50eea984d859842de98ff11e6352384a',1,'bench.h']]],
+  ['perf_5fstop',['perf_stop',['../bench_8h.html#a2777e95e90ff5a55813360c2fdbf3fc6',1,'bench.h']]],
+  ['plp_5fpower_5finit',['plp_power_init',['../bench_8h.html#a789427b15fb947ba9be99f611e5bdb16',1,'bench.h']]],
+  ['plp_5fpower_5fstart',['plp_power_start',['../bench_8h.html#a52bccef27de7d3392329be289dfda3f2',1,'bench.h']]],
+  ['plp_5fpower_5fstop',['plp_power_stop',['../bench_8h.html#aa08bf54a654588777f7dc3b4ce1a3812',1,'bench.h']]],
+  ['pmsis_5fmutex_5fdeinit',['pmsis_mutex_deinit',['../pmsis__backend__native__task__api_8h.html#a8bdc49158d3bd1d1236cf4d1a9b8b5ea',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5fmutex_5finit',['pmsis_mutex_init',['../pmsis__backend__native__task__api_8h.html#a8f8b37ffe6b13e635e6c35c6a3df1b70',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5fmutex_5frelease',['pmsis_mutex_release',['../pmsis__backend__native__task__api_8h.html#abbae39d58a255fccdb7652c6d28896d3',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5fmutex_5ftake',['pmsis_mutex_take',['../pmsis__backend__native__task__api_8h.html#ad89bf7fce6dd7879a9eeb56fca36c98a',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5fspinlock_5finit',['pmsis_spinlock_init',['../pmsis__backend__native__task__api_8h.html#aa3195e2c6fe5ff7f0b0c5ef83390019b',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5fspinlock_5frelease',['pmsis_spinlock_release',['../pmsis__backend__native__task__api_8h.html#a282e2eafdbfe9fd476ebad546d05a65b',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5fspinlock_5ftake',['pmsis_spinlock_take',['../pmsis__backend__native__task__api_8h.html#ad3439106936a911e8d30fb3d8b4d7114',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5ftask_5fcreate',['pmsis_task_create',['../pmsis__backend__native__task__api_8h.html#a2cc0f791e87ed93cc5f62649b06abc97',1,'pmsis_backend_native_task_api.h']]],
+  ['pmsis_5ftask_5fsuspend',['pmsis_task_suspend',['../pmsis__backend__native__task__api_8h.html#af7a6650d9fc5c49befb91803efd84bf5',1,'pmsis_backend_native_task_api.h']]],
+  ['print_5fresult',['print_result',['../bench_8h.html#aecc982189b50913436ef9bb98ab608b0',1,'bench.h']]],
+  ['print_5fsummary',['print_summary',['../bench_8h.html#a1a248aa51198218e3a35a33688a3f8b5',1,'bench.h']]],
+  ['printf',['printf',['../stdio_8h.html#a98631211a4a8aee62f572375d5b637be',1,'stdio.h']]],
+  ['private_5fcall',['Private_call',['../gap8__emul_8h.html#a91e331fb62cb3c2d74ba9cf8a69153d4',1,'gap8_emul.h']]],
+  ['private_5fgap8_5fdma_5fmemcpy',['Private_gap8_dma_memcpy',['../gap8__emul_8h.html#a1ad0b911c29e7d1d966c51f6d6cdac63',1,'gap8_emul.h']]],
+  ['private_5fgap8_5fdma_5fmemcpy_5f2d',['Private_gap8_dma_memcpy_2d',['../gap8__emul_8h.html#a6573b78d38d2a1d7d3f679d424c229e5',1,'gap8_emul.h']]],
+  ['putchar',['putchar',['../stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a',1,'stdio.h']]],
+  ['puts',['puts',['../stdio_8h.html#ad41876f99f190c7488e64ef39c50a23f',1,'stdio.h']]]
+];

@@ -1,0 +1,121 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Device configuration &#8212; Pulp SDK 1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pulp SDK 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="device-configuration">
+<span id="device-config"></span><h1>Device configuration<a class="headerlink" href="#device-configuration" title="Permalink to this headline">¶</a></h1>
+<p>When using a simulation platform, the default configuration is usually only activating very few peripherals and
+additional peripherals can be added by customizing the default configuration with a specific section in the user configuration.</p>
+<p>The devices to be simulated must be specified in the user INI configuration (the one passed through option <em>-\-config-user</em>). A section with name <em>board.devices.&lt;device&gt;</em> must be added for each device. &lt;device&gt; is the name of the peripheral in the architecture and can be anything as soon as it is different from other devices.</p>
+<p>Each device section must at least have the property <em>include</em>, which specifies which device to be simulated. The rest is specific to each device.</p>
+<p>When adding new devices, it may also be required to add other options for example to change the boot mode as the runner may need to generate different stimuli. These options are chip-specific.</p>
+<p>Here is an example connecting an hyperflash and hyperram, and changing the boot mode:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">board</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">hyper</span><span class="p">]</span>
+<span class="n">include</span> <span class="o">=</span> <span class="n">devices</span><span class="o">/</span><span class="n">hyper</span><span class="o">.</span><span class="n">json</span>
+<span class="n">interface</span> <span class="o">=</span> <span class="n">hyper0</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">runner</span><span class="p">]</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">boot</span><span class="o">-</span><span class="n">mode</span> <span class="o">=</span> <span class="n">rom_hyper</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">flash_type</span> <span class="o">=</span> <span class="n">hyper</span>
+</pre></div>
+</div>
+<p>Here is another example to connect 2 SPI flash:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">board</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">spiflash0</span><span class="p">]</span>
+<span class="n">include</span> <span class="o">=</span> <span class="n">devices</span><span class="o">/</span><span class="n">spiflash</span><span class="o">.</span><span class="n">json</span>
+<span class="n">interface</span> <span class="o">=</span> <span class="n">spim0</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="p">[</span><span class="n">board</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">spiflash1</span><span class="p">]</span>
+<span class="n">include</span> <span class="o">=</span> <span class="n">devices</span><span class="o">/</span><span class="n">spiflash</span><span class="o">.</span><span class="n">json</span>
+<span class="n">interface</span> <span class="o">=</span> <span class="n">spim0</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The list of available devices can be displayed by using the command <em>devices</em> with <em>pulp-run</em> like in the following example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pulp</span><span class="o">-</span><span class="n">run</span> <span class="o">--</span><span class="n">platform</span><span class="o">=</span><span class="n">gvsoc</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">gap_rev1</span> <span class="o">--</span><span class="n">binary</span><span class="o">=</span><span class="n">test</span> <span class="n">devices</span>
+</pre></div>
+</div>
+<p>More information about a device can then be displayed by adding the option <em>-\-device=&lt;name&gt;</em> where &lt;name&gt; is the name of the device taken from the table displayed with the command <em>devices</em>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/periph_config.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pulp SDK 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, ETH Zurich.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    </div>
+  </body>
+</html>

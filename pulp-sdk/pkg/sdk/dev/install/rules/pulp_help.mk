@@ -1,0 +1,35 @@
+help:
+	@echo "Available make targets:" 
+	@echo "  clean      Remove the application temporary files (only the one for the active configuration)." 
+	@echo "  conf       Generate application files (configuation, makefiles, etc)."
+	@echo "  all        Build the application."
+	@echo "  run        Run the application."
+	@echo "  dis        Disassemble application binary."
+	@echo ""
+	@echo "Available make options for targets:"
+	@echo "  CONFIG_OPT=<val>           List of options to customize the active configuration. Options are separated with whitespaces. Execute \"make help_config\" to get more information."
+	@echo "  disopt=<string>            Options to be passed to objdump when calling the dis target. This set of options replaces the default one which is -d."
+	@echo ""
+	@echo "Other targets for help:"
+	@echo "  make help_flags     Give information about the makefile flags available for configuring the application compilation and run."
+	@echo "  make help_config    Give information about the available items which can be configured in the system configuration (through CONFIG_OPT)."
+	@echo "  make help_opt       Give information about the available make options."
+	@echo ""
+
+help_config:
+	@echo "Available configuration options (through CONFIG_OPT):"
+	@plpinfo help
+
+help_flags:
+	@echo "Available flags for the makefile:"
+	@echo "  PULP_APP           Give the application name. This flag is mandatory to activate an application compilation."
+	@echo "  PULP_APP_SRCS      Specify source files which must be compiled in a way they can be used on both controller and cluster side."
+	@echo "  PULP_APP_CL_SRCS   Specify source files which must be compiled for the cluster side."
+	@echo "  PULP_APP_FC_SRCS   Specify source files which must be compiled for the controller side."
+	@echo "  PULP_CFLAGS        Specify C flags (compiler flags) which applies to compilation on both controller and cluster sides."
+	@echo "  PULP_CL_CFLAGS     Specify C flags (compiler flags) which applies only to compilation on cluster side."
+	@echo "  PULP_FC_CFLAGS     Specify C flags (compiler flags) which applies only to compilation on controller side."
+	@echo "  PULP_LDFLAGS       Specify LD flags (linker flags)."
+	@echo "  BUILD_DIR          Specify the top build directory for all configurations (default is build). Each configuration will have it own build directory as a sub-directory of this one."
+	@echo "  CONFIG_BUILD_DIR   Specify the build directory for the active configuration (default is \$$BUILD_DIR/<config name>). All temporay files for the application and for the current configuration will be put here. "
+	@echo "  BUILD_DIR_EXT      Specify an extension to the configuration build directory name. The build folder is then \$$BUILD_DIR/<config name>\$$BUILD_DIR_EXT. "

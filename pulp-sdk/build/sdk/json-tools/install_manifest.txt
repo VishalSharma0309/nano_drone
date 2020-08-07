@@ -1,0 +1,5 @@
+/home/vishal/nano_drone/pulp-sdk/pkg/sdk/dev/install/ws/python/json_tools.py
+/home/vishal/nano_drone/pulp-sdk/pkg/sdk/dev/install/ws/python/__init__.py
+/home/vishal/nano_drone/pulp-sdk/pkg/sdk/dev/install/ws/include/jsmn.h
+/home/vishal/nano_drone/pulp-sdk/pkg/sdk/dev/install/ws/include/json.hpp
+/home/vishal/nano_drone/pulp-sdk/pkg/sdk/dev/install/ws/lib/libjson.a

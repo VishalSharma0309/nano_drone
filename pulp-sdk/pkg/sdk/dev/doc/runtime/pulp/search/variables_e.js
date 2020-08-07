@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['padding',['padding',['../structrt__hyperram__conf__t.html#a3814166b74b6dd417380c53578e3b4f4',1,'rt_hyperram_conf_t']]],
+  ['pdm',['pdm',['../structrt__i2s__conf__t.html#a5d0d04608c41efb3e5f927459b71cf28',1,'rt_i2s_conf_t']]],
+  ['pending_5fbase',['pending_base',['../structpi__i2c__t.html#aed06cd7c829525521990e93636ca5137',1,'pi_i2c_t']]],
+  ['pending_5fcopy',['pending_copy',['../structpi__i2c__t.html#af793735521122d34a39886c4c74707c4',1,'pi_i2c_t::pending_copy()'],['../structpi__spim__t.html#a3d2aef7c6ff6715e673350735886773c',1,'pi_spim_t::pending_copy()']]],
+  ['pending_5fdata',['pending_data',['../structpi__i2c__t.html#a921ed47602f2671a7f22c8e51a6e1d83',1,'pi_i2c_t']]],
+  ['pending_5flength',['pending_length',['../structpi__i2c__t.html#a651bdbc6659deebfacdcf86b29ec9470',1,'pi_i2c_t']]],
+  ['pending_5fnext_5fstep',['pending_next_step',['../structpi__i2c__t.html#a756019c09faa7b4e6e1e5213f1f71bc9',1,'pi_i2c_t']]],
+  ['pending_5frepeat_5faddr',['pending_repeat_addr',['../structpi__spim__t.html#a4dc5ea545b363802a7111aca1e8860ba',1,'pi_spim_t']]],
+  ['pending_5frepeat_5fbase',['pending_repeat_base',['../structpi__spim__t.html#a4080094ea6dc1647772e22484fe584cf',1,'pi_spim_t']]],
+  ['pending_5frepeat_5fdevice',['pending_repeat_device',['../structpi__spim__t.html#a419f2b873d7dce87228bef1a3545febb',1,'pi_spim_t']]],
+  ['pending_5frepeat_5fdup_5faddr',['pending_repeat_dup_addr',['../structpi__spim__t.html#afc0a8055f4b94a6955806d449ec2899c',1,'pi_spim_t']]],
+  ['pending_5frepeat_5fflags',['pending_repeat_flags',['../structpi__spim__t.html#a13193ae56d715308a55166a321cf8637',1,'pi_spim_t']]],
+  ['pending_5frepeat_5flen',['pending_repeat_len',['../structpi__spim__t.html#add520545ba17ca5d91e8d127de3e97fd',1,'pi_spim_t']]],
+  ['pending_5frepeat_5fmisaligned_5fsize',['pending_repeat_misaligned_size',['../structpi__spim__t.html#a3caa0e46481737f6cae9404fdafad99c',1,'pi_spim_t']]],
+  ['pending_5frepeat_5fsend',['pending_repeat_send',['../structpi__spim__t.html#a8b6b6b6c4319d347ccad973a2de52a4e',1,'pi_spim_t']]],
+  ['pending_5fstep',['pending_step',['../structpi__i2c__t.html#af7501d4ad46552791844928d20f93115',1,'pi_i2c_t']]],
+  ['pendings',['pendings',['../structrt__udma__channel__t.html#a565fa37daef6b74ee42b861ed60f3f3a',1,'rt_udma_channel_t']]],
+  ['phase',['phase',['../structrt__spim__conf__t.html#a451aaeba4c02ecaa37ba29696a4542b0',1,'rt_spim_conf_t']]],
+  ['polarity',['polarity',['../structrt__spim__conf__t.html#a0cf7557bce4f21b295096f02d6505e9e',1,'rt_spim_conf_t']]],
+  ['psource',['psource',['../structident__t.html#a6dbe275d37ecdaf342552d1f834c4053',1,'ident_t']]]
+];

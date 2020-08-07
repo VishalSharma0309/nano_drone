@@ -1,0 +1,206 @@
+#!/usr/bin/env python3
+
+import plptools as plp
+
+import argparse
+import os
+import sys
+
+def deploy(project):
+  return project.deploy(packages=args.packages)
+
+def test(project):
+  return project.test(packages=args.packages, args=args)
+
+def checkout(project):
+  return project.checkout(packages=args.packages, groups=args.groups, modules=args.modules, deps=args.deps)
+
+def deps(project):
+  return project.get_dependencies(packages=args.packages)
+
+def exec_deps(project):
+  return project.get_exec_dependencies(packages=args.packages)
+
+def build(project):
+  return project.build(packages=args.packages, groups=args.groups, modules=args.modules, deps=args.deps)
+
+def env(project):
+  return project.env_gen(packages=args.packages)
+
+def clean(project):
+  return project.clean(packages=args.packages, groups=args.groups, modules=args.modules, deps=args.deps)
+
+def fullclean(project):
+  return project.fullclean(packages=args.packages)
+
+def versions(project):
+  return project.versions()
+
+def update(project):
+  return project.update(packages=args.packages, groups=args.groups, modules=args.modules)
+
+def testset(project):
+  return project.testset(packages=args.packages, groups=args.groups, modules=args.modules)
+
+def downloader(project):
+  return project.downloader(packages=args.packages, version=args.version)
+
+def sync(project):
+  return project.sync(packages=args.packages, groups=args.groups, modules=args.modules)
+
+
+
+
+commands = {'clean'    : ['Clean temporary files', clean],
+      'checkout'   : ['Checkout sources', checkout],
+      'distclean'  : ['Remove whole build and install directories', fullclean],
+      'deps'       : ['Retrieve dependencies', deps],
+      'exec_deps'       : ['Retrieve exec dependencies', exec_deps],
+      'build'      : ['Build packages', build],
+      'env'        : ['Generate environment', env],
+      'deploy'     : ['Deploy packages', deploy],
+      'versions'   : ['Update version file', versions],
+      'update'     : ['Update versions', update],
+      'testset'    : ['Generate testset', testset],
+      'test'       : ['Launch tests', test],
+      'downloader' : ['downloader', downloader],
+      'sync'       : ['Synchronize git submodules', sync],
+      }
+
+
+
+
+
+command_help = """Available commands:
+"""
+
+for name, cmd in commands.items():
+  command_help += '  %-10s %s\n' % (name, cmd[0])
+
+
+
+
+parser = argparse.ArgumentParser(
+  description='Run a testset',
+  epilog=command_help, formatter_class=argparse.RawDescriptionHelpFormatter, add_help=False
+)
+
+parser.add_argument('command', metavar='CMD', type=str, nargs='*',
+                   help='a command to be executed')
+
+parser.add_argument("--threads", dest="threads", default=1, type=int, help="Specify the number of worker threads")
+parser.add_argument("--package", dest="packages", action="append", default=None, help="Specifies active packages")
+parser.add_argument("--module", dest="modules", action="append", default=[], help="Specifies active modules")
+parser.add_argument("--group", dest="groups", action="append", default=[], help="Specifies active groups")
+parser.add_argument("--version", dest="version", default=None, help="Specify new version")
+parser.add_argument("--commit", dest="commit", default=None, help="Specify commit")
+parser.add_argument("--deps", dest="deps", action="store_true", help="Also apply the command on dependencies")
+parser.add_argument("--distrib", dest="distrib", default=None, help="Specifies the Linux distribution for the packages to be downloaded")
+parser.add_argument("--log", dest="log", default=None, help="Specifies the file where to log the output of the commands. Default: %(default)s.")
+parser.add_argument("--stdout", dest="stdout", action='store_true', default=False, help="Dumps commands output to the standard output. Also deactivate logging to a file")
+parser.add_argument("--db", dest="db", action='store_true', default=False, help="Activate Pulp database access")
+parser.add_argument("--db-info", dest="db_info", default=None, help="Dump Pulp database information to this file")
+parser.add_argument("--env", dest="db_env", default=[], action="append", help="Append environment information for datavbase")
+parser.add_argument("--branch", dest="branch", default=None, help="Specify repository branch")
+parser.add_argument("--debug", dest="debug", action='store_true', default=False, help="Activate debug mode for this script")
+parser.add_argument("--stdout-cached", dest="stdout_cached", action='store_true', default=False, help="Dumps commands output to the standard output without mixing different modules together. Also deactivate logging to a file")
+parser.add_argument("--help", dest="help", action='store_true', default=False, help="Dump help")
+
+[args, otherArgs] = parser.parse_known_args() 
+
+if 'test' in args.command:
+
+  parser.add_argument("--gui", dest="gui", action="store_true", help="Opens user interface")
+  parser.add_argument("--max-output-len", dest="maxOutputLen", type=int, default=1024*1024, help="Maximum length of a test output. Default: %(default)s bytes")
+  parser.add_argument("--test", dest="testList", default=None, action="append", help="Specify a test to be run")
+  parser.add_argument("--max-timeout", dest="maxTimeout", default="3600", help="Sets maximum timeout allowed for a test")
+
+
+args = parser.parse_args()
+
+
+
+
+if args.help:
+    parser.print_help()
+    exit(0)
+
+
+
+
+
+
+
+pendingCommands = []
+last_cmd = ''
+
+def execCommand():
+
+  if project.get_status() != 0:
+    global last_cmd
+    print (plp.bcolors.FAIL + 'FATAL ERROR: the command \'%s\' has failed' % (last_cmd) + plp.bcolors.ENDC)
+    return
+
+  if len(pendingCommands) == 0: 
+    project.stop(0)
+    return
+
+  cmd = pendingCommands.pop(0)
+
+  if commands.get(cmd) == None:
+    if project.exec_cmd(' '.join([cmd] + pendingCommands), packages=args.packages, groups=args.groups, modules=args.modules) != 0:
+      project.stop(-1)
+    pendingCommands.clear()
+    return
+  else:
+    try:
+      last_cmd = cmd
+      if commands.get(cmd)[1](project) != 0:
+        print ()
+        print (plp.bcolors.FAIL + 'FATAL ERROR: the command \'%s\' has failed' % (cmd) + plp.bcolors.ENDC)
+        project.stop(-1)
+    except Exception as e:
+        print (plp.bcolors.FAIL + 'FATAL ERROR: the command \'%s\' has failed with an exception: %s' % ((cmd) + plp.bcolors.ENDC, e))
+        project.stop(-1)
+        if args.debug: raise
+      
+
+
+
+
+def handleCommands(log=None):
+
+  global pendingCommands
+
+  if len(args.command) == 0:
+      parser.print_help()
+      print ()
+      print ('Available commands:')
+      for name, cmd in commands.items():
+        print ('  %-10s %s' % (name, cmd[0]))
+      exit(0)
+  
+  else:
+    pendingCommands = args.command.copy()
+    execCommand()
+
+
+
+project = None
+
+try:
+  project = plp.Project(tools_path=os.environ.get('PULP_CONFIGS_PATH'), packages=args.packages, distrib=args.distrib, cmd_callback=execCommand, log=args.log, stdout=args.stdout, stdout_cached=args.stdout_cached, nb_threads=args.threads, db=args.db, db_info=args.db_info, db_env=args.db_env, branch=args.branch, commit=args.commit)
+  
+  if args.log != None:
+    with open(args.log, 'w') as log:
+        project.start(callback=handleCommands, log=log)
+  else:
+      project.start(callback=handleCommands)
+  
+  exit(project.get_status())
+
+except Exception as e:
+    print (plp.bcolors.FAIL + 'FATAL ERROR: %s' % (plp.bcolors.ENDC + str(e)))
+    if project != None: project.stop(-1)
+    if args.debug: raise
+    else: exit(-1)

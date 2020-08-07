@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import json_tools as js
+import memmap as map
+
+parser = argparse.ArgumentParser(description='Access to pulp targets information')
+
+parser.add_argument('command', metavar='CMD', type=str, nargs='*',
+                   help='a command to be executed')
+
+
+
+[args, otherArgs] = parser.parse_known_args() 
+
+parser.add_argument("--config", dest="config", default=None, help="Specify the input config")
+parser.add_argument("--include", dest="includes", default=[], action="append", help="Specify configuration include path")
+
+if 'memmap' in args.command:
+  parser.add_argument("--header", dest="header", default=None, help="Dump to header")
+  parser.add_argument("--rst", dest="rst", default=None, help="Dump to rst")
+  parser.add_argument("--name", dest="name", default=None, help="Specify header name")
+  parser.add_argument("--regs", dest="regs", action="store_true", help="Also dump register map")
+  parser.add_argument("--fields", dest="fields", action="store_true", help="Also dump register fields")
+
+args = parser.parse_args()
+
+
+os.environ['PULP_CONFIGS_PATH'] = ':'.join(args.includes + os.environ.get('PULP_CONFIGS_PATH').split(':'))
+
+
+
+js_conf = js.import_config_from_file(args.config, find=True)
+
+
+def memmap():
+    header = None
+    rst = None
+
+    if args.rst is not None:
+        rst = map.Rst_file(args.rst, args.name)
+        memmap = map.Regmap(js_conf).dump_memmap_to_rst(rst)
+        rst.close()
+
+    else:
+      if args.header is not None:
+          header = map.Header_file(args.header, args.name)
+
+      memmap = map.Regmap(js_conf).dump_memmap(dump_regs=args.regs, dump_regs_fields=args.fields, header=header)
+
+      if header is not None:
+          header.close()
+
+    return 0
+
+
+
+
+commands = {
+  'memmap'  : ['Dump memory map', memmap],
+}
+
+pendingCommands = []
+
+
+def handleCommands(log=None):
+
+  global pendingCommands
+
+  if len(args.command) == 0:
+      parser.print_help()
+      print ()
+      print ('Available commands:')
+      for name, cmd in commands.items():
+        print ('  %-10s %s' % (name, cmd[0]))
+      exit(0)
+  
+  else:
+    pendingCommands = args.command.copy()
+    for cmd in pendingCommands:
+
+      if commands.get(cmd)[1]() != 0:
+        print ()
+        print (plp.bcolors.FAIL + 'FATAL ERROR: the command \'%s\' has failed' % (cmd) + plp.bcolors.ENDC)
+        exit(1)
+
+handleCommands()
