@@ -85,7 +85,7 @@ make all run platform=gvsoc runner_args="--vcd"
 
 This command produces a Gtkwave script which can be opened using a command described in the command result. Something like:
 ```
-gtkwave /home/vishal/gap_sdk/examples/pmsis/test_features/cluster_fork/BUILD/GAP8_V2/GCC_RISCV/view.gtkw
+gtkwave /home/vishal/gap_sdk/examples/pmsis/helloworld/BUILD/GAP8_V2/GCC_RISCV/view.gtkw
 ```
 Example:
 ![PMSIS HelloWorld Example](imgs/hello_world.png)
